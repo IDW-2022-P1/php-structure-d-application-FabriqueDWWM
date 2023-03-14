@@ -7,9 +7,9 @@
         <div id="menu_large">
             <ul class="visible">
                 <li><a href="index.php">Accueil</a></li>
-                <li><a href="about.php">A propos</a></li>
-                <li><a href="services.php">Services</a></li>
-                <li><a href="contact.php">Contact</a></li>
+                <li><a href="index.php?page=about">A propos</a></li>
+                <li><a href="index.php?page=services">Services</a></li>
+                <li><a href="index.php?page=contact">Contact</a></li>
             </ul>
             <div>
                 <button>TAKE ACTION</button>

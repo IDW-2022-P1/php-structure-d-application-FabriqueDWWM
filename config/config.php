@@ -1,5 +1,6 @@
 <?php
 
+define('TEMPLATE', './template');
 define('TEMPLATE_PARTS', './template/template_parts');
 define('PAGES', './template/pages/');
 define('IMAGES', './assets/img');

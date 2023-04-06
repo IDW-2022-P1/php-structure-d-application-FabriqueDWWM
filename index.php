@@ -1,17 +1,11 @@
-<?php include './config/config.php'; ?>
-<?php
-// $page = "accueil";
-// if (isset($_GET["page"])) {
-//     $page = $_GET["page"]; // valeur du paramètre d'url page
-// }
+<?php 
+include './config/config.php'; 
+require_once(CLASSES . '/Router.php');
 
+$router = new Router();
 $routes = include 'config/routes.php';
-$page = isset($_GET["page"]) ? $_GET["page"] : "accueil";
-// if (isset($routes[$page])) {
-//     $titre = $routes[$page];
-// } else {
-//     $titre = "404";
-// }
+$page = $router->getPage();
+
 $titre = isset($routes[$page]) ? $routes[$page] : "404";
 $pageLink = CSS . "/" . $page . ".css";
 ?>
@@ -34,14 +28,10 @@ $pageLink = CSS . "/" . $page . ".css";
 <body>
     <?php
     include TEMPLATE_PARTS . '/_header.php';
-    if (file_exists(PAGES . $page . ".php")) {
-        include PAGES . $page . ".php";
-    } else {
-        include PAGES . "page404.php";
-    }
-    ?>
 
-    <?php include TEMPLATE_PARTS . '/_footer.php'; ?>
+    $router->includeTemplate();
+    
+    include TEMPLATE_PARTS . '/_footer.php'; ?>
 
 </body>
 

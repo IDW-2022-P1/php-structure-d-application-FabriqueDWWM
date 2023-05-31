@@ -1,8 +1,8 @@
 <?php
-
+// correspondenace entre le paramètre pege de l'url et la méthode de controller à appeler
 return [
-    "accueil" => "Accueil",
+    "accueil" => "accueil",
     "about" => "A propos",
-    "services" => "Services",
+    "services" => "services",
     "contact" => "Contact"
 ];

@@ -18,8 +18,49 @@
     <?php
     include TEMPLATE_PARTS . '/_header.php';
 
-    $router->includeTemplate();
-    
+    $controller = new Controller($router);
+    // $controller->render($router);
+    // déterminer la méthode de controller à appeler en fonction de la page ($router->getPage())
+    $routes = include './src/config/routes.php';
+    if (array_key_exists($router->getPage(), $routes)) {
+        $methodName = $routes[$router->getPage()];
+        var_dump($methodName);
+        $controller->$methodName();
+    }
+    var_dump($routes);
+
+    class Controller
+    {
+        private $router;
+
+        public function __construct($router)
+        {
+            $this->router = $router;
+        }
+
+        public function accueil()
+        {
+            // ici du code spécifique à la page d'accueil : par ex récupérer des données en bdd
+            // TODO
+            $this->render();
+        }
+
+        public function services()
+        {
+
+            $this->render();
+        }
+
+        public function render()
+        {
+            if (file_exists(PAGES . $this->router->getPage() . ".php")) {
+                include PAGES . $this->router->getPage() . ".php";
+            } else {
+                include PAGES . "page404.php";
+            }
+        }
+    }
+
     include TEMPLATE_PARTS . '/_footer.php'; ?>
 
 </body>
